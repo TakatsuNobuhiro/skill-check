@@ -1,0 +1,14 @@
+[Unit]
+Description=The Apache HTTP Server
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/httpd -k start
+ExecReload=/usr/sbin/httpd -k graceful
+ExecStop=/usr/sbin/httpd -k stop
+PIDFile=/run/httpd/httpd.pid
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
